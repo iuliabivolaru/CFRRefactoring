@@ -7,25 +7,25 @@ import java.time.LocalDateTime;
 /**
  * Created by iuliab on 13.02.2018.
  */
+@Entity
 public class Route {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "route_sequence")
-    @SequenceGenerator(name = "route_sequence", sequenceName = "ROUTE_SEQUENCE", allocationSize = 1)
     @Column(name = "ROUTE_ID")
     private Integer id;
 
-    @Column(name = "DEPARTURE_LOCALITY")
-    private String departureLocality;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="AGENCY_ID", referencedColumnName="AGENCY_ID")
+    private Agency agency;
 
-    @Column(name = "ARRIVAL_LOCALITY")
-    private String arrivalLocality;
+    @Column(name = "route_short_name")
+    private String shortName;
 
-    @Column(name = "DEPARTURE_TIME")
-    private LocalDateTime departureTime;
+    @Column(name = "route_long_name")
+    private String longName;
 
-    @Column(name = "ARRIVAL_TIME")
-    private LocalDateTime arrivalTime;
+    @Column(name = "route_type")
+    private RouteType type;
 
     public Integer getId() {
         return id;
@@ -35,37 +35,46 @@ public class Route {
         this.id = id;
     }
 
-    public String getDepartureLocality() {
-        return departureLocality;
+    public Agency getAgency() {
+        return agency;
     }
 
-    public void setDepartureLocality(String departureLocality) {
-        this.departureLocality = departureLocality;
+    public void setAgency(Agency agency) {
+        this.agency = agency;
     }
 
-    public String getArrivalLocality() {
-        return arrivalLocality;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setArrivalLocality(String arrivalLocality) {
-        this.arrivalLocality = arrivalLocality;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
-    public LocalDateTime getDepartureTime() {
-        return departureTime;
+    public String getLongName() {
+        return longName;
     }
 
-    @XmlJavaTypeAdapter(LocalDateAdapter.class)
-    public void setDepartureTime(LocalDateTime departureTime) {
-        this.departureTime = departureTime;
+    public void setLongName(String longName) {
+        this.longName = longName;
     }
 
-    public LocalDateTime getArrivalTime() {
-        return arrivalTime;
+    public RouteType getType() {
+        return type;
     }
 
-    @XmlJavaTypeAdapter(LocalDateAdapter.class)
-    public void setArrivalTime(LocalDateTime arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setType(RouteType type) {
+        this.type = type;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Route route = (Route) o;
+
+        return id != null ? id.equals(route.id) : route.id == null;
+    }
+
 }
