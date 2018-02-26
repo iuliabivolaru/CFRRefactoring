@@ -78,4 +78,53 @@ public class Agency {
         return agencyId != null ? agencyId.equals(agency.agencyId) : agency.agencyId == null;
     }
 
+    public static class AgencyBuilder
+    {
+        private Agency agency;
+
+        private AgencyBuilder()
+        {
+            agency = new Agency();
+        }
+
+        public AgencyBuilder withId(String id)
+        {
+            agency.agencyId = id;
+            return this;
+        }
+
+        public AgencyBuilder withName(String name)
+        {
+            agency.name = name;
+            return this;
+        }
+
+        public AgencyBuilder withUrl(String url)
+        {
+            agency.url = url;
+            return this;
+        }
+
+        public AgencyBuilder withTimezone(String timezone)
+        {
+            agency.timezone = timezone;
+            return this;
+        }
+
+        public AgencyBuilder withRoutes(Set<Route> routes)
+        {
+            agency.routes = routes;
+            return this;
+        }
+
+        public static AgencyBuilder agency()
+        {
+            return new AgencyBuilder();
+        }
+
+        public Agency build()
+        {
+            return agency;
+        }
+    }
 }

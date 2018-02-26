@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class Route {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ROUTE_ID")
     private Integer id;
 
@@ -77,4 +78,53 @@ public class Route {
         return id != null ? id.equals(route.id) : route.id == null;
     }
 
+    public static class RouteBuilder
+    {
+        private Route route;
+
+        private RouteBuilder()
+        {
+            route = new Route();
+        }
+
+        public RouteBuilder withId(Integer id)
+        {
+            route.id = id;
+            return this;
+        }
+
+        public RouteBuilder withAgency(Agency agency)
+        {
+            route.agency = agency;
+            return this;
+        }
+
+        public RouteBuilder withShortName(String shortName)
+        {
+            route.shortName = shortName;
+            return this;
+        }
+
+        public RouteBuilder withLongName(String longName)
+        {
+            route.longName = longName;
+            return this;
+        }
+
+        public RouteBuilder withRouteType(RouteType routeType)
+        {
+            route.type = routeType;
+            return this;
+        }
+
+        public static RouteBuilder route()
+        {
+            return new RouteBuilder();
+        }
+
+        public Route build()
+        {
+            return route;
+        }
+    }
 }
