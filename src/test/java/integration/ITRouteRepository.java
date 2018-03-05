@@ -16,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * Created by iuliab on 21.02.2018.
  */
@@ -39,7 +41,7 @@ public class ITRouteRepository {
 
         List<Route> routes = routeRepository.findAllRoutes();
 
-        Assertions.assertThat(routes.size()).isEqualTo(1);
+        assertThat(routes.size()).isEqualTo(1);
     }
 
 }

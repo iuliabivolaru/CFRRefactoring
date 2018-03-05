@@ -1,5 +1,6 @@
 package cgk.cfr.newlook.service.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class Agency {
     @Column(name = "agency_timezone")
     private String timezone;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "agency", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Route> routes = new HashSet<>();
 
