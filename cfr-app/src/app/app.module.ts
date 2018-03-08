@@ -5,9 +5,8 @@ import {AppRoutingModule} from "./app-routing.module";
 
 import {AppComponent} from "./app.component";
 import {TrainRoutesModule} from "./train-routes/train-routes.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {RouteService} from "./train-routes/train-route.service";
-
 
 @NgModule({
   declarations: [

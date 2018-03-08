@@ -5,13 +5,18 @@
         <header class="header">
           <div class="row">
             <div class="col-md-4">
-              <h1>Routes</h1>
+              <h1>{{ "Routes" | translate }}</h1>
             </div>
             <div class="col-md-6">
-              <button type="button" class="btn btn-primary" (click)="getAllTrainRoutes()">Search routes</button>
+              <button type="button" class="btn btn-primary" (click)="getAllTrainRoutes()">{{ "Search routes" |
+                translate}}
+              </button>
             </div>
             <div class="col-md-2">
-
+                <span class="flag-icon flag-icon-gb flag-icon-squared"
+                      (click)="switchLanguage('en')"></span>
+                <span class="flag-icon flag-icon-ro flag-icon-squared"
+                    (click)="switchLanguage('ro')"></span>
             </div>
           </div>
 
@@ -23,7 +28,7 @@
         <table class="table">
           <thead>
           <tr>
-            <th>Route short name</th>
+            <th>{{ "Route short name" | translate }}</th>
             <th></th>
           </tr>
           </thead>
