@@ -20,4 +20,8 @@ public class RouteService {
         return routeRepository.findAllRoutes();
     }
 
+    public List<Route> findRoutesByDepartureAndArrival(String departure, String arrival) {
+        return routeRepository.findRoutesByDepartureAndArrival(departure, arrival);
+    }
+
 }

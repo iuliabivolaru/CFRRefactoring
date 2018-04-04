@@ -25,6 +25,12 @@ public class RouteRepository {
         return selectAllQuery.getResultList();
     }
 
+    public List<Route> findRoutesByDepartureAndArrival(String departure, String arrival) {
+        String selectStatement = "SELECT r FROM Route r WHERE longName LIKE '%" + departure + "%" + arrival + "%'";
+        TypedQuery<Route> selectAllQuery = entityManager.createQuery(selectStatement, Route.class);
+        return selectAllQuery.getResultList();
+    }
+
     public Route createRoute(Route route) {
         entityManager.persist(route.getAgency());
         entityManager.persist(route);

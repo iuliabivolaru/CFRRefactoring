@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -29,6 +31,18 @@ public class RouteResource {
     @Produces(MediaType.APPLICATION_JSON)
     public ResponseEntity<List<Route>> getAllRoutes(){
         List<Route> routes = routeService.findAllRoutes();
+        if(routes.size() == 0){
+            return ResponseEntity.notFound().build();
+        }
+        return new ResponseEntity<>(routes, HttpStatus.OK);
+    }
+
+    @GetMapping
+    @Produces(MediaType.APPLICATION_JSON)
+    @RequestMapping("/filter")
+    public ResponseEntity<List<Route>> getRoutesByDepartureAndArrival(@QueryParam("departure") String departure,
+                                                                      @QueryParam("arrival") String arrival){
+        List<Route> routes = routeService.findRoutesByDepartureAndArrival(departure, arrival);
         if(routes.size() == 0){
             return ResponseEntity.notFound().build();
         }

@@ -45,4 +45,15 @@ public class RouteResourceTest {
         Assertions.assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
+    @Test
+    public void givenARoute_findRoutesByDepartureAndArrival_returns200OKResponse() {
+        Route route = RouteTestFixture.createRouteWithAgency();
+        when(mockRouteService.findRoutesByDepartureAndArrival("Bucuresti Nord Test", "Videle")).thenReturn(asList(route));
+
+        ResponseEntity<List<Route>> responseEntity = routeResource.getRoutesByDepartureAndArrival("Bucuresti Nord Test",
+                "Videle");
+
+        Assertions.assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
 }

@@ -12,21 +12,34 @@ export class TrainRoutesListComponent implements OnInit {
 
   routes: TrainRoute[];
   translate: TranslateService;
-
-  switchLanguage (lang: string) {
-    this.translate.use(lang);
-  };
+  departure: string;
+  arrival: string;
 
   constructor(private trainRouteService: RouteService, translate: TranslateService) {
     this.translate = translate;
     translate.setDefaultLang('en');
   }
 
+  switchLanguage (lang: string) {
+    this.translate.use(lang);
+  };
+
   ngOnInit() {
   }
 
   getAllTrainRoutes() {
     this.trainRouteService.findAll().subscribe(
+      routes => {
+        this.routes = routes;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  getTrainRoutesByDepartureAndArrival() {
+    this.trainRouteService.findRoutesByDepartureAndArrival(this.departure, this.arrival).subscribe(
       routes => {
         this.routes = routes;
       },

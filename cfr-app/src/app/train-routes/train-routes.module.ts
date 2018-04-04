@@ -6,6 +6,7 @@ import { TrainRoutesListComponent } from './train-routes-list/train-routes-list.
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {HttpClient} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -13,6 +14,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   imports: [
+    FormsModule,
     CommonModule,
     TrainRoutesRoutingModule,
     TranslateModule.forRoot({

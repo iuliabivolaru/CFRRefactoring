@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Observable';
-import {TrainRoute} from './train-route';
+import {TrainRoute} from 'app/train-routes/train-route';
 
 @Injectable()
 export class RouteService {
@@ -15,7 +15,16 @@ export class RouteService {
 
   findAll(): Observable<TrainRoute[]> {
     return this.http.get<TrainRoute[]>(this.apiUrl);
-      // .map((res: Response) => res.json())
-      // .catch((error: any) => Observable.throw(error.error || 'Server error'));
+    // .map((res: Response) => res.json())
+    // .catch((error: any) => Observable.throw(error.error || 'Server error'));
+  }
+
+  findRoutesByDepartureAndArrival(departure: string, arrival: string): Observable<TrainRoute[]> {
+    const params = new HttpParams()
+      .set('departure', departure)
+      .set('arrival', arrival);
+    return this.http.get<TrainRoute[]>(this.apiUrl + "/filter", {params});
+    // .map((res: Response) => res.json())
+    // .catch((error: any) => Observable.throw(error.error || 'Server error'));
   }
 }

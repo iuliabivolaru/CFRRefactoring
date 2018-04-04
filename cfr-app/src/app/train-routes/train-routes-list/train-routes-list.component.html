@@ -3,42 +3,45 @@
     <div class="col">
       <section>
         <header class="header">
-          <div class="row">
-            <div class="col-md-4">
-              <h1>{{ "Routes" | translate }}</h1>
+          <div style="float: right">
+            <span class="flag-icon flag-icon-gb flag-icon-squared" (click)="switchLanguage('en')"></span>
+            <span class="flag-icon flag-icon-ro flag-icon-squared" (click)="switchLanguage('ro')"></span>
+          </div>
+          <form>
+            <div class="form-group">
+              <input class="form-control col-md-6" placeholder="Departure" [(ngModel)] ="departure" name="departure">
             </div>
-            <div class="col-md-6">
-              <button type="button" class="btn btn-primary" (click)="getAllTrainRoutes()">{{ "Search routes" |
-                translate}}
+            <div class="form-group">
+              <input class="form-control col-md-6" placeholder="Arrival" [(ngModel)] ="arrival" name="arrival">
+            </div>
+            <div>
+              <button type="button" class="btn btn-primary" (click)="getTrainRoutesByDepartureAndArrival()">
+                {{ "Search routes" | translate}}
               </button>
             </div>
-            <div class="col-md-2">
-                <span class="flag-icon flag-icon-gb flag-icon-squared"
-                      (click)="switchLanguage('en')"></span>
-                <span class="flag-icon flag-icon-ro flag-icon-squared"
-                    (click)="switchLanguage('ro')"></span>
-            </div>
-          </div>
+          </form>
+          <div class="row">
+            <!--<div class="col-md-4">-->
+            <!--<h1>{{ "Routes" | translate }}</h1>-->
+            <!--</div>-->
 
+          </div>
         </header>
       </section>
-
       <section class="main">
-
         <table class="table">
           <thead>
-          <tr>
-            <th>{{ "Route short name" | translate }}</th>
-            <th></th>
-          </tr>
+            <tr>
+              <th>{{ "Route short name" | translate }}</th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let route of routes">
-            <th scope="row">{{route.shortName}}</th>
-            <td>
-            </td>
-          </tr>
-
+            <tr *ngFor="let route of routes">
+              <th scope="row">{{route.shortName}}</th>
+              <td>
+              </td>
+            </tr>
           </tbody>
         </table>
       </section>
