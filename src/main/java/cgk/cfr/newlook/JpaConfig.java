@@ -42,7 +42,6 @@ public class JpaConfig {
     @Value("${frame.database.password}")
     private String frameDbPassword;
 
-
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
         return new PropertySourcesPlaceholderConfigurer();

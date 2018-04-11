@@ -20,7 +20,9 @@ public enum TripExceptionType {
     public static TripExceptionType fromCode(Integer code) {
         if (code != null) {
             for (TripExceptionType e : TripExceptionType.values()) {
-                if (e.getCode() == code) { return e; }
+                if (e.getCode() == code) {
+                    return e;
+                }
             }
         }
         return ADDED_FOR_SPECIFIC_DATE;

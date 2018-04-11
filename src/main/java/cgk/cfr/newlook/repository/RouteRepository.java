@@ -1,6 +1,5 @@
 package cgk.cfr.newlook.repository;
 
-import cgk.cfr.newlook.service.entity.Agency;
 import cgk.cfr.newlook.service.entity.Route;
 import org.springframework.stereotype.Repository;
 
@@ -22,12 +21,14 @@ public class RouteRepository {
     public List<Route> findAllRoutes() {
         String selectStatement = "SELECT r FROM Route r";
         TypedQuery<Route> selectAllQuery = entityManager.createQuery(selectStatement, Route.class);
+
         return selectAllQuery.getResultList();
     }
 
     public List<Route> findRoutesByDepartureAndArrival(String departure, String arrival) {
         String selectStatement = "SELECT r FROM Route r WHERE longName LIKE '%" + departure + "%" + arrival + "%'";
         TypedQuery<Route> selectAllQuery = entityManager.createQuery(selectStatement, Route.class);
+
         return selectAllQuery.getResultList();
     }
 

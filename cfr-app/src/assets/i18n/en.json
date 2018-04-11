@@ -1,5 +1,6 @@
 {
-  "Routes": "Routes",
+  "Departure": "Departure",
+  "Arrival": "Arrival",
   "Search routes": "Search routes",
   "Route short name": "Route short name"
 }

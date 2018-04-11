@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static fixture.RouteTestFixture.createOtherRouteWithAgency;
 import static fixture.RouteTestFixture.createRouteWithAgency;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -49,7 +50,7 @@ public class ITRouteRepository {
     public void
     givenRoutes_findRoutesByDepartureAndArrival_findRoutes() {
         routeRepository.createRoute(createRouteWithAgency());
-        routeRepository.createRoute(RouteTestFixture.createOtherRouteWithAgency());
+        routeRepository.createRoute(createOtherRouteWithAgency());
 
         List<Route> routes = routeRepository.findRoutesByDepartureAndArrival("Bucuresti Nord Test",
                 "Brasov");

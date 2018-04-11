@@ -1,4 +1,5 @@
 import {Agency} from "./agency";
+
 export class TrainRoute {
 
   id: string;

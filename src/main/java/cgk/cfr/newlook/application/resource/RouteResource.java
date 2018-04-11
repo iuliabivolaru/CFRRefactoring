@@ -43,7 +43,7 @@ public class RouteResource {
     public ResponseEntity<List<Route>> getRoutesByDepartureAndArrival(@QueryParam("departure") String departure,
                                                                       @QueryParam("arrival") String arrival){
         List<Route> routes = routeService.findRoutesByDepartureAndArrival(departure, arrival);
-        if(routes.size() == 0){
+        if(routes.isEmpty()){
             return ResponseEntity.notFound().build();
         }
         return new ResponseEntity<>(routes, HttpStatus.OK);

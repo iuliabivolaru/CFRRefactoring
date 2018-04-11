@@ -1,5 +1,6 @@
 {
-  "Routes": "Rute",
-  "Search routes": "Cautare rute",
-  "Route short name": "Denumire ruta"
+	"Departure": "Plecare",
+	"Arrival": "Sosire",
+	"Search routes": "Cautare rute",
+	"Route short name": "Denumire ruta"
 }

@@ -9,10 +9,12 @@
           </div>
           <form>
             <div class="form-group">
-              <input class="form-control col-md-6" placeholder="Departure" [(ngModel)] ="departure" name="departure">
+              <input class="form-control col-md-6" placeholder='{{"Departure" | translate}}' [(ngModel)]="departure"
+                     name="departure">
             </div>
             <div class="form-group">
-              <input class="form-control col-md-6" placeholder="Arrival" [(ngModel)] ="arrival" name="arrival">
+              <input class="form-control col-md-6" placeholder='{{"Arrival" | translate}}' [(ngModel)]="arrival"
+                     name="arrival">
             </div>
             <div>
               <button type="button" class="btn btn-primary" (click)="getTrainRoutesByDepartureAndArrival()">
@@ -21,9 +23,6 @@
             </div>
           </form>
           <div class="row">
-            <!--<div class="col-md-4">-->
-            <!--<h1>{{ "Routes" | translate }}</h1>-->
-            <!--</div>-->
 
           </div>
         </header>
