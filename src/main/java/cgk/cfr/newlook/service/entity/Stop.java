@@ -38,4 +38,49 @@ public class Stop {
     public Double getStopLon() {
         return stopLon;
     }
+
+
+    public static class StopBuilder
+    {
+        private Stop stop;
+
+        private StopBuilder()
+        {
+            stop = new Stop();
+        }
+
+        public StopBuilder withId(Long id)
+        {
+            stop.stopId = id;
+            return this;
+        }
+
+        public StopBuilder withName(String name)
+        {
+            stop.stopName = name;
+            return this;
+        }
+
+        public StopBuilder withStopLat(Double stopLat)
+        {
+            stop.stopLat = stopLat;
+            return this;
+        }
+
+        public StopBuilder withStopLon(Double stopLon)
+        {
+            stop.stopLon = stopLon;
+            return this;
+        }
+
+        public static StopBuilder stop()
+        {
+            return new StopBuilder();
+        }
+
+        public Stop build()
+        {
+            return stop;
+        }
+    }
 }

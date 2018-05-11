@@ -9,12 +9,34 @@
           </div>
           <form>
             <div class="form-group">
-              <input class="form-control col-md-6" placeholder='{{"Departure" | translate}}' [(ngModel)]="departure"
-                     name="departure">
+              <!--<input class="form-control col-md-6" placeholder='{{"Departure" | translate}}' [(ngModel)]="departure"-->
+                     <!--name="departure">-->
+              <form class="example-form">
+                <mat-form-field>
+                  <input type="text" matInput placeholder='{{"Departure" | translate}}' [formControl]="myControl"
+                         [(ngModel)]="departure" [matAutocomplete]="auto">
+                </mat-form-field>
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let stop of stops" [value]="stop">
+                    {{ stop.stopName }}
+                  </mat-option>
+                </mat-autocomplete>
+              </form>
             </div>
             <div class="form-group">
-              <input class="form-control col-md-6" placeholder='{{"Arrival" | translate}}' [(ngModel)]="arrival"
-                     name="arrival">
+              <!--<input class="form-control col-md-6" placeholder='{{"Arrival" | translate}}' [(ngModel)]="arrival"-->
+                     <!--name="arrival">-->
+              <form class="example-form">
+                <mat-form-field>
+                  <input type="text" matInput placeholder='{{"Arrival" | translate}}' [formControl]="myControl"
+                         [(ngModel)]="arrival" [matAutocomplete]="auto">
+                </mat-form-field>
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let stop of filteredStops | async" [value]="option">
+                    {{ stop }}
+                  </mat-option>
+                </mat-autocomplete>
+              </form>
             </div>
             <div>
               <button type="button" class="btn btn-primary" (click)="getTrainRoutesByDepartureAndArrival()">

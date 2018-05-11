@@ -31,7 +31,7 @@ public class RouteResource {
     @Produces(MediaType.APPLICATION_JSON)
     public ResponseEntity<List<Route>> getAllRoutes(){
         List<Route> routes = routeService.findAllRoutes();
-        if(routes.size() == 0){
+        if(routes.isEmpty()){
             return ResponseEntity.notFound().build();
         }
         return new ResponseEntity<>(routes, HttpStatus.OK);

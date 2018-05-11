@@ -39,4 +39,48 @@ public class Trip {
     public String getShortName() {
         return shortName;
     }
+
+
+    public static final class TripBuilder {
+        private String tripId;
+        private Route route;
+        private TripCalendar calendar;
+        private String shortName;
+
+        private TripBuilder() {
+        }
+
+        public static TripBuilder aTrip() {
+            return new TripBuilder();
+        }
+
+        public TripBuilder withTripId(String tripId) {
+            this.tripId = tripId;
+            return this;
+        }
+
+        public TripBuilder withRoute(Route route) {
+            this.route = route;
+            return this;
+        }
+
+        public TripBuilder withCalendar(TripCalendar calendar) {
+            this.calendar = calendar;
+            return this;
+        }
+
+        public TripBuilder withShortName(String shortName) {
+            this.shortName = shortName;
+            return this;
+        }
+
+        public Trip build() {
+            Trip trip = new Trip();
+            trip.tripId = this.tripId;
+            trip.shortName = this.shortName;
+            trip.route = this.route;
+            trip.calendar = this.calendar;
+            return trip;
+        }
+    }
 }
